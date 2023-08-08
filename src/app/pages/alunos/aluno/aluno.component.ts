@@ -24,7 +24,14 @@ export class AlunoComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id == 0) {
       this.alunosService.addAluno(this.aluno).subscribe({
-        next: (aluno) => this.aluno = aluno,
+        next: (aluno) => {
+          this.aluno = aluno
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Sucesso',
+            detail: 'Aluno criado com sucesso',
+          });
+        },
         error: (error) => {
           console.error(error)
           this.messageService.add({
@@ -36,7 +43,14 @@ export class AlunoComponent implements OnInit {
       });
   }else{
     this.alunosService.updateAluno(this.aluno).subscribe({
-      next: (aluno) => this.aluno = aluno,
+      next: (aluno) => {
+        this.aluno = aluno
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Sucesso',
+          detail: 'Aluno atualizado com sucesso',
+        });
+      },
       error: (error) => {
         console.error(error)
         this.messageService.add({
