@@ -1,0 +1,14 @@
+<p-card [header]="aluno.nome + ' ' + aluno.sobrenome" styleClass="ml-4">
+  <div class="flex flex-row">
+    <div>
+      <p-avatar [label]="(aluno.nome ?? 'A').charAt(0)" styleClass="mr-2" size="xlarge"></p-avatar>
+    </div>
+    <div class="flex-1">
+      <p><span class= "font-bold">Idade: </span> <span>{{aluno.idade}}</span></p>
+      <p><span class= "font-bold">Genero: </span> <span>{{aluno.sexo == "M" ? "Masculino" : "Feminino"}}</span></p>
+    </div>
+  </div>
+  <div class="pt-4 text-end" [routerLink]="[aluno.id]">
+    <i class="pi pi-user-edit text-xl"></i>
+  </div>
+</p-card>

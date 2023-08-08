@@ -1,1 +1,77 @@
-<p>aluno works!</p>
+<div class="flex flex-col">
+  <h1 class="text-2xl font-bold">Cadastro do Aluno</h1>
+  <form
+    #alunoForm
+    (ngSubmit)="createOrUpdate()"
+    class="grid grid-cols-12 gap-4 flex-1 "
+  >
+    <div class="flex flex-col col-span-1">
+      <label for="id">ID: </label>
+      <input
+        name="id"
+        type="text"
+        pInputText
+        [(ngModel)]="aluno.id"
+        [disabled]="true"
+      />
+    </div>
+    <div class="flex flex-col col-span-5">
+      <label for="nome">Nome: </label>
+      <input name="nome" type="text" pInputText [(ngModel)]="aluno.nome" />
+    </div>
+    <div class="flex flex-col col-span-6">
+      <label for="sobrenome">Sobrenome: </label>
+      <input
+        name="sobrenome"
+        type="text"
+        pInputText
+        [(ngModel)]="aluno.sobrenome"
+      />
+    </div>
+    <div class="flex flex-col col-span-6">
+      <label for="idade">Idade: </label>
+      <p-inputNumber
+        styleClass="w-full"
+        name="idade"
+        type="text"
+        [(ngModel)]="aluno.idade"
+      ></p-inputNumber>
+    </div>
+    <div class="flex flex-col col-span-6">
+      <label for="sexo">Genero: </label>
+      <p-dropdown
+        [options]="sexos"
+        name="sexo"
+        [(ngModel)]="aluno.sexo"
+        styleClass="w-full h-12"
+      >
+        <!-- <ng-template pTemplate="selectedItem">
+            <div class="flex align-items-center gap-2" *ngIf="aluno.sexo">
+                <div>{{ aluno.sexo == "M" ? "Masculino" : "Feminino" }}</div>
+            </div>
+        </ng-template> -->
+        <ng-template let-option pTemplate="item">
+          <div class="flex align-items-center gap-2">
+            <div>{{ option == "M" ? "Masculino" : "Feminino" }}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </form>
+  <div class="flex flex-row justify-end p-4">
+    <button
+      pButton
+      type="submit"
+      label="Salvar"
+      class="w-1/6"
+      (click)="createOrUpdate()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Voltar"
+      class="w-1/6"
+      (click)="goBack()"
+    ></button>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+.page{
+  background-color: #eff3f8;
+}
+
+:host ::ng-deep router-outlet + * {
+  flex: 1;
+}
