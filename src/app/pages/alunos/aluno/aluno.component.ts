@@ -67,6 +67,21 @@ export class AlunoComponent implements OnInit {
 
   }
 
+  delete(){
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.alunosService.deleteAluno(id).subscribe({
+      next: () => this.goBack(),
+      error: (error) => {
+        console.error(error)
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Erro',
+          detail: 'Erro ao excluir o aluno',
+        });
+      },
+    });
+  }
+
   goBack(): void {
     window.history.back();
   }

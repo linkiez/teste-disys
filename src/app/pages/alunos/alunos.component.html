@@ -1,8 +1,19 @@
 <div>
   <h1 class="text-2xl font-bold">Lista de Alunos</h1>
-  <div class="">
-    <div class="w-full flex flex-row flex-wrap  p-4 items-start">
+  <div>
+    <button
+      pButton
+      type="button"
+      label="Novo Aluno"
+      class="w-1/6 mx-8 mt-4"
+      routerLink="/alunos/0"
+    ></button>
+  </div>
+  <div class="flex flex-col h-full justify-stretch">
+    <div class="w-full flex flex-row flex-wrap  p-4 items-start flex-1">
       <aluno-card [aluno]="aluno" *ngFor="let aluno of alunos"></aluno-card>
     </div>
+
+
 </div>
 
